@@ -26,15 +26,21 @@ class CalculatorsController < ApplicationController
   end
 
   def payment_result
-    @the_apr = params.fetch("apr").to_f/100/12
-    @the_years = params.fetch("years").to_i * 12
-    @the_principal = params.fetch("principal").to_f
+    @user_apr = params.fetch("user_apr").to_f
+    @user_years = params.fetch("user_years")
+    @user_principal = params.fetch("user_principal").to_f
 
-    numerator = @the_apr *  @the_principal
-    denominator = 1 - (1 + @the_apr) ** -@the_years
-    @the_payment = (numerator / denominator).round(2)
-    @interest_rate = (@the_apr *12 * 100).round(4)
+    @r = (@user_apr / 100) / 12
+    @n = @user_years.to_i * 12
 
+    @numerator = @r * @user_principal
+    @denominator = 1 - ((1 + @r) ** -@n)
+
+    @payment = @numerator / @denominator
+
+    @fromatted_apr = "#{"%.4f" % @user_apr}%"
+    @fromatted_principal = format("%.2f", @user_principal).reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+    @formatted_payment = format("%.2f", @payment).reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
     render(template: "templates/payment_result")
 
   end
