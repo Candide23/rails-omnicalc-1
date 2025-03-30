@@ -1,12 +1,28 @@
-<h1>Calculate the suare of a number</h1>
+<form action="/payment/results">
+  <div>
+    <label for="apr_id">APR</label>
 
-<form action="/payment/result">
-  <label for="apr_id">APR</label>
-   <input id="apr_id" name="apr">
-  <label for="years_id">Number of years</label>
-   <input id="years_id" name="years">
+    <input id="apr_id" text="text" name="apr" placeholder="E.g. 5.42">
+  </div>
+
+  <div>
+    <label for="years_id">Number of years</label>
+
+    <input id="years_id" text="text" name="years" placeholder="How many years to repay?">
+  </div>
+
+  <div>
     <label for="principal_id">Principal</label>
-     <input id="principal_id" name="principal">
- 
- 
+
+    <input id="principal_id" text="text" name="principal" placeholder="How much principal?">
+  </div>
+
   <button>Calculate monthly payment</button>
+</form>
+
+
+
+
+
+
+
