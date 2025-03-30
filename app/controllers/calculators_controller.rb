@@ -1,7 +1,7 @@
-class CalcultorsController < ApplicationController
+class CalculatorsController < ApplicationController
   
-  def home
-    render(template: "template/square")
+  def square
+    render(template: "templates/square")
   end
 
   def square_result
